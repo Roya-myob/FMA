@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication", "ConsoleApplication.csproj", "{2C3CF516-B003-43A2-9422-4F329A7B5805}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recursion", "Recursion.csproj", "{2C3CF516-B003-43A2-9422-4F329A7B5805}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
