@@ -1,0 +1,7 @@
+C:\Users\roya.taleghani\Documents\Projects\FMA\datastructures\LinkedLists\LinkedLists\bin\Debug\LinkedLists.exe.config
+C:\Users\roya.taleghani\Documents\Projects\FMA\datastructures\LinkedLists\LinkedLists\bin\Debug\LinkedLists.exe
+C:\Users\roya.taleghani\Documents\Projects\FMA\datastructures\LinkedLists\LinkedLists\bin\Debug\LinkedLists.pdb
+C:\Users\roya.taleghani\Documents\Projects\FMA\datastructures\LinkedLists\LinkedLists\obj\Debug\LinkedLists.csproj.CoreCompileInputs.cache
+C:\Users\roya.taleghani\Documents\Projects\FMA\datastructures\LinkedLists\LinkedLists\obj\Debug\LinkedLists.exe
+C:\Users\roya.taleghani\Documents\Projects\FMA\datastructures\LinkedLists\LinkedLists\obj\Debug\LinkedLists.pdb
+C:\Users\roya.taleghani\Documents\Projects\FMA\datastructures\LinkedLists\LinkedLists\obj\Debug\LinkedLists.csprojAssemblyReference.cache
