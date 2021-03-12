@@ -6,8 +6,7 @@ using System.Reflection.Emit;
 using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography.X509Certificates;
 
-//write some unit tests
-// then fix the issues
+
 
 namespace LinkedLists
 {
@@ -15,13 +14,7 @@ namespace LinkedLists
     {
         static void Main(string[] args)
         {
-            
             var myList = new LinkedList();
-
-           // myList.AddTOEND("A");
-            //myList.AddTOEND("B");
-            //myList.AddTOEND("C");
-         
             myList.Add("A");
             myList.Add("B");
             myList.Add("C");
@@ -46,13 +39,13 @@ namespace LinkedLists
             head = null;
         }
         
+        //Add to begining of the list
         public void Add(string data)
         {
           Node myNode = new Node(data);
           myNode.NextNode = head;
           head = myNode;
-          //Console.WriteLine(head);
-
+          
         }
         public void AddTOEND(string data)
         {
@@ -68,6 +61,11 @@ namespace LinkedLists
           
         public bool HasElement(string data)
         {
+
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
            //1- go the each node that is added already in the list
            //2- check if the element that we are looking for exist in that node 
            //3- if exist the return true
@@ -80,14 +78,10 @@ namespace LinkedLists
            //         return true;
            //     }
            // }
-           if (head == null)
-           {
-               return false;
-
-           }
+           
 
            ; 
-           while ( currentElement.NextNode != null)
+           while ( currentElement != null)
            {
                if (currentElement.Data == data)
                {
