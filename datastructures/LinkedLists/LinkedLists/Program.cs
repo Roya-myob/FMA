@@ -5,9 +5,6 @@ using System.IO.MemoryMappedFiles;
 using System.Reflection.Emit;
 using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography.X509Certificates;
-
-
-
 namespace LinkedLists
 {
     class Program
@@ -15,37 +12,40 @@ namespace LinkedLists
         static void Main(string[] args)
         {
             var myList = new LinkedList();
-            myList.Add("A");
-            myList.Add("B");
-            myList.Add("C");
-            myList.Add("D");
+            myList.AddToFront("A");
+            myList.AddToFront("B");
+           // myList.AddToFront("C");
+            //myList.AddToFront("D");
             
-            var myElement = myList.HasElement("A");
-           //var myNthElement = myList.NthElement(2);
+            //var myElement = myList.HasElement("A");
+           var myNthElement = myList.NthElement(2);
 
-            var newLength = myList.GetLength();
-            Console.WriteLine("Has Element: " + myElement);
+           // var newLength = myList.GetLength();
+            //Console.WriteLine("Has Element: " + myElement);
            // Console.WriteLine("Length is: " + newLength);
            //Console.WriteLine("nth Element is " + myNthElement );
         }
+      
     }
   
     public class LinkedList
     {
         private Node head;
-
         public LinkedList ( )
         {
             head = null;
         }
         
-        //Add to begining of the list
-        public void Add(string data)
+        public void AddToFront(string data)
         {
           Node myNode = new Node(data);
           myNode.NextNode = head;
           head = myNode;
           
+          if (data == null)
+          {
+              throw new ArgumentNullException(nameof(data));
+          }
         }
         public void AddTOEND(string data)
         {
@@ -61,7 +61,6 @@ namespace LinkedLists
           
         public bool HasElement(string data)
         {
-
             if (data == null)
             {
                 throw new ArgumentNullException(nameof(data));
@@ -78,8 +77,6 @@ namespace LinkedLists
            //         return true;
            //     }
            // }
-           
-
            ; 
            while ( currentElement != null)
            {
@@ -104,24 +101,35 @@ namespace LinkedLists
 
         public string NthElement(int n)
         {
-            // input is number and output is the Node
+           // input is number and output is the Node
             // eg 2 => B
             //start from first of the list which is head
             // count from 0 and increment with the number of nodes 
             // return the node that matches the number
-            var count = 0;
+            var count = 1;
             
             var current  = head;
-            while (current.NextNode != null)
+            
+            if ( n <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(n));
+            }
+
+            if (n > GetLength())
+            {
+                throw new ArgumentOutOfRangeException(nameof(n));
+            }
+            
+            while (current != null)
             {
               
              if (count == n)
                 {
-                    
                     var nth = current.Data;
                     //return myNthElement;
                     Console.WriteLine("Nth element is : " + nth);
                    // break;
+                   return nth;
                 }
                 else
                 {
@@ -131,12 +139,7 @@ namespace LinkedLists
                 }
             }
 
-
             return current.Data;
-            
-
-
-
 
         }
         
