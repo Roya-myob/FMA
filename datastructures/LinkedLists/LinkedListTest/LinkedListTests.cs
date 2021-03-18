@@ -110,6 +110,17 @@ namespace LinkedListTest
              result4.Should().Match("#$%");
 
         }
+        
+        [TestMethod]
+        public void NthElement_Should_Return_The_Correct_Element_Even_If_Only_One()
+        {
+            var myList = new LinkedList();
+            myList.AddToFront("ABC");
+            var result = myList.NthElement(1);
+            result.Should().Match("ABC");
+
+        }
+
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
@@ -132,7 +143,7 @@ namespace LinkedListTest
             myList.AddToFront("ABC");
             myList.AddToFront("EFG");
             myList.AddToFront("123");
-            var result = myList.NthElement(-5);
+            var result = myList.NthElement(0);
             result.Should().Contain("Exception");
         }
 

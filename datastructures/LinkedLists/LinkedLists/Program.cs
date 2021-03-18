@@ -96,7 +96,6 @@ namespace LinkedLists
            }
            
            return false;
-
         }
 
         public string NthElement(int n)
@@ -107,8 +106,8 @@ namespace LinkedLists
             // count from 0 and increment with the number of nodes 
             // return the node that matches the number
             var count = 1;
-            
             var current  = head;
+            var nth = "";
             
             if ( n <= 0)
             {
@@ -124,13 +123,11 @@ namespace LinkedLists
             {
               
              if (count == n)
-                {
-                    var nth = current.Data;
-                    //return myNthElement;
-                    Console.WriteLine("Nth element is : " + nth);
-                   // break;
-                   return nth;
+                { 
+                  nth = current.Data;
+                  break;
                 }
+     
                 else
                 {
                     count++;
@@ -138,9 +135,7 @@ namespace LinkedLists
 
                 }
             }
-
-            return current.Data;
-
+            return nth;
         }
         
         public int GetLength()
