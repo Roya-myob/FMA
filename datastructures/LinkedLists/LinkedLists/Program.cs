@@ -14,16 +14,9 @@ namespace LinkedLists
             var myList = new LinkedList();
             myList.AddToFront("A");
             myList.AddToFront("B");
-           // myList.AddToFront("C");
-            //myList.AddToFront("D");
-            
-            //var myElement = myList.HasElement("A");
+          
            var myNthElement = myList.NthElement(2);
-
-           // var newLength = myList.GetLength();
-            //Console.WriteLine("Has Element: " + myElement);
-           // Console.WriteLine("Length is: " + newLength);
-           //Console.WriteLine("nth Element is " + myNthElement );
+           
         }
       
     }
@@ -31,21 +24,28 @@ namespace LinkedLists
     public class LinkedList
     {
         private Node head;
+        private int length;
         public LinkedList ( )
-        {
+        {   
+            //head is a ref type and if doesn't have a value it will be null by default
             head = null;
+            length = 0;
         }
         
         public void AddToFront(string data)
-        {
+        { 
+           if (data == null)
+           {
+               throw new ArgumentNullException(nameof(data)); 
+           }
+            
           Node myNode = new Node(data);
           myNode.NextNode = head;
+          //  two lines below are not Threat safe - we have to always question it and be aware of it 
           head = myNode;
+          length++;
           
-          if (data == null)
-          {
-              throw new ArgumentNullException(nameof(data));
-          }
+
         }
         public void AddTOEND(string data)
         {
@@ -65,19 +65,9 @@ namespace LinkedLists
             {
                 throw new ArgumentNullException(nameof(data));
             }
-           //1- go the each node that is added already in the list
-           //2- check if the element that we are looking for exist in that node 
-           //3- if exist the return true
-           //4- if does not exist , we go to the next node
+          
            var currentElement = head;
-           // if (currentElement.NextNode == null)
-           // {
-           //     if (currentElement.Data == data)
-           //     {
-           //         return true;
-           //     }
-           // }
-           ; 
+           
            while ( currentElement != null)
            {
                if (currentElement.Data == data)
@@ -87,10 +77,7 @@ namespace LinkedLists
                else
                {
                    currentElement = currentElement.NextNode;
-                   // if (currentElement.Data == data)
-                   // {
-                   //     return true;
-                   // }
+                   
                }
 
            }
@@ -140,10 +127,6 @@ namespace LinkedLists
         
         public int GetLength()
         {
-            // 1- head is our first element and we set current to head .... also we can set count to 1 
-            // 2- we check if there is any element next to the current element, if yes > we increase the count
-            // 3- we need move the current to the next element and go to step 2
-            // if the next is null  then stop the count
             
             var count = 1;
             var current = head;
@@ -155,8 +138,13 @@ namespace LinkedLists
                 count++;
                 current = current.NextNode;
             }
-
+            
             return count;
+        }
+
+        public int GetNewLength()
+        {   
+            return length;
         }
        
     }
@@ -175,6 +163,4 @@ namespace LinkedLists
         }
     }
 
-   
-
-}
+   }

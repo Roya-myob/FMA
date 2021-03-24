@@ -24,8 +24,6 @@ namespace LinkedListTest
         {
             var myList = new LinkedList();
             myList.AddToFront("ABCD");
-            //myList.Add("EFG");
-           // myList.Add("QRS");
             var result = myList.HasElement("ZEN");
             result.Should().Be(false);
 
@@ -71,7 +69,7 @@ namespace LinkedListTest
             myList.AddToFront("123");
             myList.AddToFront("#$%");
 
-            var result = myList.HasElement("#$%");
+            var result = myList.HasElement("ABC");
 
             result.Should().Be(true);
             
@@ -146,7 +144,29 @@ namespace LinkedListTest
             var result = myList.NthElement(0);
             result.Should().Contain("Exception");
         }
+        
+        //GetNewLength method
+        [TestMethod]
+        public void GetNewLength_should_return_the_Exact_Number_Of_Element_In_The_List()
+        {
+            var myList = new LinkedList();
+            myList.AddToFront("ABC");
+            myList.AddToFront("EFG");
+            myList.AddToFront("QRS");
+            myList.AddToFront("123");
 
+            var result = myList.GetNewLength();
+            result.Should().Be(4);
+        }
+        
+        [TestMethod]
+        public void GetNewLength_should_return_zero_If_No_Element_In_The_List()
+        {
+            var myList = new LinkedList();
+            var result = myList.GetNewLength();
+            result.Should().Be(0);
+        }
+        
 
     }
 }
