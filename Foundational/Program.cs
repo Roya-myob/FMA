@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
@@ -12,26 +13,13 @@ namespace Foundational
         {
             var acc1 = new BankAccount("Kate", "Walsh");
             var acc2 = new BankAccount("Nick", "Shepherd");
-            var acc3 = new BankAccount("Barb", "Skeggs");
+            var acc3 = new BankAccount("Barb", "Skg");
 
-
-            BankAccount[] allAccounts = new BankAccount[3];
-            allAccounts[0] = acc1;
-            allAccounts[1] = acc2;
-
-            for (int i = 0; i < allAccounts.Length; i++)
-            {
-                if (allAccounts[i] != null)
-                {
-                    Console.WriteLine("Count["+i+"] - Account Name: " + allAccounts[i].GetFullName());
-                }
-                
-               
-            }
-            allAccounts[2] = acc3;
-            Console.WriteLine("Account location 2 - Account Name: " + allAccounts[2].GetFullName());
+            List<BankAccount> allAccounts = new List<BankAccount>();
+            allAccounts.Add(acc1);
+            allAccounts.Add(acc2);
             
-            for (int i = 0; i < allAccounts.Length; i++)
+            for (int i = 0; i < allAccounts.Count; i++)
             {
                 if (allAccounts[i] != null)
                 {
@@ -40,6 +28,10 @@ namespace Foundational
                 
                
             }
+            allAccounts.Add(acc3);
+            Console.WriteLine("Count[#2] - Account Name: " + allAccounts[2].GetFullName());
+            
+          
         }
 
 
