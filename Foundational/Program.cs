@@ -10,39 +10,59 @@ namespace Foundational
     {
         public static void Main(string[] args)
         {
-            var acc1 = new BankAcc("Kate","Walsh");
-            var acc2 = new BankAcc("Nick", "Shepherd");
-            var acc3 = new BankAcc("Barb", "Skeggs");
+            var acc1 = new BankAccount("Kate", "Walsh");
+            var acc2 = new BankAccount("Nick", "Shepherd");
+            var acc3 = new BankAccount("Barb", "Skeggs");
 
 
-            BankAcc[] allAccounts = new BankAcc[] {acc1, acc2};
+            BankAccount[] allAccounts = new BankAccount[3];
+            allAccounts[0] = acc1;
+            allAccounts[1] = acc2;
 
             for (int i = 0; i < allAccounts.Length; i++)
             {
-                Console.Write(allAccounts[i] + "Should be acc 1 and 2");
-                allAccounts[2] = acc3;
-                Console.Write(allAccounts[2] + " Should be acc 1, 2, 3 ");
-
+                if (allAccounts[i] != null)
+                {
+                    Console.WriteLine("Count["+i+"] - Account Name: " + allAccounts[i].GetFullName());
+                }
+                
+               
+            }
+            allAccounts[2] = acc3;
+            Console.WriteLine("Account location 2 - Account Name: " + allAccounts[2].GetFullName());
             
-
-
+            for (int i = 0; i < allAccounts.Length; i++)
+            {
+                if (allAccounts[i] != null)
+                {
+                    Console.WriteLine("Count["+i+"] - Account Name: " + allAccounts[i].GetFullName());
+                }
+                
+               
+            }
         }
-        public class BankAcc
+
+
+        public class BankAccount
         {
             private string _firstName;
             private string _lastName;
-            private int _accNumber;
+            private int _accountNumber;
             private int _balance;
             
 
-           public BankAcc(string firstName, string lastName)
+           public BankAccount(string firstName, string lastName)
             {
 
                 _firstName = firstName;
                 _lastName = lastName;
 
             }
-           
+
+           public string GetFullName()
+           {
+               return _firstName + " " + _lastName;
+           }
            
             
         }
