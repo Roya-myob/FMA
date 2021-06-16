@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Management.Instrumentation;
+using System.Runtime.CompilerServices;
 
 namespace Foundational
 {
@@ -13,33 +15,29 @@ namespace Foundational
             var acc1 = new BankAccount("Kate", "Walsh");
             var acc2 = new BankAccount("Nick", "Shepherd");
             var acc3 = new BankAccount("Barb", "Skeggs");
-
-
-            BankAccount[] allAccounts = new BankAccount[3];
-            allAccounts[0] = acc1;
-            allAccounts[1] = acc2;
-
-            for (int i = 0; i < allAccounts.Length; i++)
-            {
-                if (allAccounts[i] != null)
-                {
-                    Console.WriteLine("Count["+i+"] - Account Name: " + allAccounts[i].GetFullName());
-                }
-                
-               
-            }
-            allAccounts[2] = acc3;
-            Console.WriteLine("Account location 2 - Account Name: " + allAccounts[2].GetFullName());
+           // var acc4 = new BankAccount("R","T");
             
-            for (int i = 0; i < allAccounts.Length; i++)
-            {
-                if (allAccounts[i] != null)
-                {
-                    Console.WriteLine("Count["+i+"] - Account Name: " + allAccounts[i].GetFullName());
-                }
-                
-               
+            Hashtable ht = new Hashtable();
+            ht.Add("Kate", acc1);
+            ht.Add("Nick", acc2);
+            ht.Add("Barb", acc3);
+            ht.Add( "Roya", null); // value can be null
+            ht.Add(1, "hello"); // different data tyoe
+            ht.Add(2, 340.07);
+           
+            // null ref if set to undefined key
+            Console.WriteLine(((BankAccount) ht["Kate"]).GetFullName());
+            
+
+            ICollection keys = ht.Keys;
+            
+            foreach (var k in keys) {
+                Console.WriteLine(" key value = " + k);
+                //Console.WriteLine(((BankAccount) ht[k]).GetFullName());
             }
+            
+            
+            
         }
 
 
@@ -59,12 +57,14 @@ namespace Foundational
 
             }
 
-           public string GetFullName()
+           /*public string GetFullName()  
            {
                return _firstName + " " + _lastName;
-           }
+           }*/
            
-            
+           public string GetFullName() => _firstName + " " + _lastName;
+          
+
         }
 
         
