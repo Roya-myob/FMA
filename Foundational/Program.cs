@@ -43,8 +43,8 @@ namespace Foundational
 
         public class BankAccount
         {
-            private string _firstName;
-            private string _lastName;
+            static string _firstName;
+            static string _lastName;
             private int _accountNumber;
             private int _balance;
             
@@ -53,8 +53,17 @@ namespace Foundational
             {
 
                 _firstName = firstName;
+          
                 _lastName = lastName;
 
+                getFullName = () => Console.WriteLine("no");
+
+                if (true)
+                {
+                    getFullName = () => Console.WriteLine("yes");
+                }
+
+                getFullName();
             }
 
            /*public string GetFullName()  
@@ -62,7 +71,9 @@ namespace Foundational
                return _firstName + " " + _lastName;
            }*/
            
-           public string GetFullName() => _firstName + " " + _lastName;
+          // Func<double, double> square = static x => x * x;
+       
+          // public string () => _firstName + " " + _lastName;
           
 
         }
