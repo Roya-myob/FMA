@@ -53,7 +53,6 @@ namespace Foundational
             {
 
                 _firstName = firstName;
-          
                 _lastName = lastName;
 
                 getFullName = () => Console.WriteLine("no");
