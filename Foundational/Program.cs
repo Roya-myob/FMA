@@ -4,68 +4,78 @@ using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Management.Instrumentation;
+using System.Runtime.CompilerServices;
 
 namespace Foundational
 {
-    internal class Program
-    {
-        public static void Main(string[] args)
-        {
-            var acc1 = new BankAccount("Kate", "Walsh");
-            var acc2 = new BankAccount("Nick", "Shepherd");
-            var acc3 = new BankAccount("Barb", "Skg");
-            BankAccount acc4 = new BankAccount("Simon","Chan");
-            acc4.Balance = 5;
-            Console.WriteLine("acc4 balance is --->> "+ acc4.Balance);
+    public class Drawing  
+    {  
+        public virtual double Area()  
+        {  
+            return 55;  
+        }  
+    }  
+  
+    public class Circle : Drawing  
+    {  
+        public double Radius { get; set; }  
+        public Circle()  
+        {  
+            Radius = 5;  
+        }
+    }  
+  
+    public class Square : Drawing  
+    {  
+        public double Length { get; set; }  
+        public Square()  
+        {  
+            Length = 6;  
+        }  
+        public override double Area()  
+        {  
+            return Math.Pow(Length, 2);  
+        }  
+    }  
+  
+    public class Rectangle : Drawing  
+    {  
+        public double Height { get; set; }  
+        public double Width { get; set; }  
+        public Rectangle()  
+        {  
+            Height = 5.3;  
+            Width = 3.4;  
+        }  
+        public override double Area()  
+        {  
+            return Height * Width;  
+        }  
+    }  
+  
+    class Program  
+    {  
+        static void Main(string[] args)  
+        {  
+  
+            Drawing circle = new Circle();  
+            Console.WriteLine("Area :" + circle.Area());  
+  
+            Drawing square = new Square();  
+            Console.WriteLine("Area :" + square.Area());  
+  
+            Drawing rectangle = new Rectangle();  
+            Console.WriteLine("Area :" + rectangle.Area());  
             
-
-            List<BankAccount> allAccounts = new List<BankAccount>();
-            allAccounts.Add(acc1);
-            allAccounts.Add(acc2);
-            
-            
-            for (int i = 0; i < allAccounts.Count; i++)
-            {
-                if (allAccounts[i] != null)
-                {
-                    Console.WriteLine("Count["+i+"] - Account Name: " + allAccounts[i].GetFullName());
-                }
-                
-               
-            }
-            allAccounts.Add(acc3);
-            Console.WriteLine("Count[#2] - Account Name: " + allAccounts[2].GetFullName());
-            
-            
+            DoStuff(new List<Drawing> {circle, square, rectangle});
         }
 
-
-        public class BankAccount
+        public static void DoStuff(List<Drawing> collection)
         {
-            private string _firstName;
-            private string _lastName;
-            private int _accountNumber;
-            
-            public int Balance
-            { get; set; }
-
-           public BankAccount(string firstName, string lastName)
+            collection.ForEach((c) =>
             {
-
-                _firstName = firstName;
-                _lastName = lastName;
-
-            }
-
-           public string GetFullName()
-           {
-               return _firstName + " " + _lastName  ;
-           }
-           
-            
+                Console.WriteLine("Area: " + c.Area());
+            });
         }
-
-        
-        
     }
 }
